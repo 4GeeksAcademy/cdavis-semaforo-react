@@ -10,3 +10,27 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+.lights{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 5px 0;
+    filter: brightness(50%);
+}
+
+.row{
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 3px;
+}
+
+.lights-on{
+    filter: brightness(100%);
+}
+
+.lights-off{
+    filter: brightness(1);
+}
