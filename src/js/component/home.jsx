@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
@@ -7,6 +7,24 @@ import rigoImage from "../../img/rigo-baby.jpg";
 const Home = () => {
 
 	const [on, setOn] = useState("bg-danger");
+	const [active, setActive] = useState("false");
+
+	useEffect(() => {
+		if(active){
+			const interval = setInterval(() => {
+				if(on == "bg-danger"){
+					setOn("bg-warning")
+				}else if(on == "bg-warning"){
+					setOn("bg-success")
+				}else if(on == "bg-success"){
+					setOn("bg-danger")
+				}
+			}, 1000)
+			return () => clearInterval(interval)
+
+	
+		}
+	}, [active, on])
 
 	
 	return (
@@ -18,8 +36,8 @@ const Home = () => {
 					<div className={`bg-warning ${on == "bg-warning" ? "lights-on" : " "} lights align-middle`} onClick={() => setOn(`bg-warning`)}></div>
 				
 					<div className={`bg-danger ${on == "bg-danger" ? "lights-on" : " "} lights align-bottom`} onClick={() => setOn(`bg-danger`)}></div>
-					
-					<button type="button" class="btn btn-secondary">Cambiar</button>
+
+					<button onClick={() => setActive(!active)} type="button" className="btn btn-secondary">Cambiar</button>
 			</div>
 
 			
